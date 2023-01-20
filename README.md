@@ -1,44 +1,39 @@
 # Portuguese Clinical NER - Disorder
 
-Este projeto tem como objetivo desenvolver uma aplicação de reconhecimento de entidades nomeadas em textos clínicos em português. Para isso, foi utilizado o modelo [BioBERTpt](https://github.com/HAILab-PUCPR/BioBERTpt), treinado com o corpus [SemClinBr](https://github.com/HAILab-PUCPR/SemClinBr).
+Este repositório contém o código-fonte para uma aplicação de reconhecimento de entidades nomeadas (NER) clínicas. A aplicação foi desenvolvida utilizando o framework Streamlit e o modelo pré-treinado "pucpr/clinicalnerpt-disorder" para a tarefa de NER.
 
-## Como usar
+### Instalação
 
-### Pré-requisitos
+Para executar esta aplicação, é necessário ter o Docker e o Docker Compose instalados.
 
--   Docker
--   Docker Compose
+1.  Clone este repositório
+2.  Na raiz do projeto execute o comando abaixo para criar as imagens e iniciar os contêineres:
 
-### Executando a aplicação
+Copy code
 
-1.  Clone este repositório: `git clone https://github.com/[SEU_USUARIO]/ner-disorder.git`
-2.  Construa e inicie a aplicação com o comando `docker-compose up --build`
-3.  Acesse a aplicação em seu navegador em `http://localhost:8501`
+`make up` 
 
-### Executando testes
+A aplicação estará disponível em [http://localhost:8501](http://localhost:8501/)
 
-Para executar os testes unitários, execute o seguinte comando dentro do container:
+### Utilização
 
-`pytest` 
+A aplicação possui duas funcionalidades principais: reconhecimento de entidades nomeadas e visualização de dados do paciente.
 
-## Estrutura de pastas
+1.  Para realizar o reconhecimento de entidades nomeadas, é necessário inserir o ID do paciente e o texto do prontuário. Ao clicar no botão "Reconhecer entidades", a aplicação irá realizar a previsão utilizando o modelo pré-treinado e informar se foi detectado câncer. Os dados do paciente serão salvos em um arquivo json, caso o câncer não tenha sido detectado.
+2.  Para visualizar os dados do paciente, é necessário inserir o ID do paciente e clicar no botão "Ver dados do paciente". A aplicação irá carregar os dados do paciente a partir do arquivo json correspondente e exibir na tela.
 
-.
-├── app.py
-├── config.json
-├── Dockerfile
-├── docker-compose.yml
-├── helpers.py
-├── model
-│   ├── biobertpt-all
-│   │   ├── config.json
-│   │   ├── pytorch_model.bin
-│   │   ├── special_tokens_map.json
-│   │   ├── tokenizer_config.json
-│   │   └── vocab.txt
-├── README.md
-├── requirements.txt
-├── service.py
-└── tests
-    ├── test_helpers.py
-    └── test_service.py` 
+### Testes
+
+Para executar os testes, utilize o comando abaixo:
+
+
+`make test` 
+
+Este comando irá executar os testes.
+
+### Lint
+
+Para verificar o código-fonte quanto às boas práticas de estilo e organização, utilize o comando abaixo:
+
+
+`make lint`

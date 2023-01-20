@@ -5,7 +5,9 @@ from utils.helpers import Helpers
 helpers = Helpers()
 clinical_ner_service = ClinicalNERService()
 
-st.set_page_config(page_title="Clinical NER App", page_icon=":hospital:", layout="wide")
+st.set_page_config(
+    page_title="Clinical NER App", page_icon=":hospital:", layout="wide"
+)
 st.title("Clinical Named Entities Recognition")
 
 
@@ -14,7 +16,9 @@ texto_prontuario = st.text_area("Insira o texto do prontuário:")
 
 
 if st.button("Reconhecer entidades"):
-    disorder_list = clinical_ner_service.predict({"texto_prontuario": texto_prontuario})
+    disorder_list = clinical_ner_service.predict(
+        {"texto_prontuario": texto_prontuario}
+    )
     cancer_detected, patient_data = helpers.detect_cancer({}, disorder_list)
     if cancer_detected:
         st.success("Câncer detectado!")
