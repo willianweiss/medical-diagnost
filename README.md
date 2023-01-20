@@ -9,7 +9,6 @@ Para executar esta aplicação, é necessário ter o Docker e o Docker Compose i
 1.  Clone este repositório
 2.  Na raiz do projeto execute o comando abaixo para criar as imagens e iniciar os contêineres:
 
-Copy code
 
 `make up` 
 
